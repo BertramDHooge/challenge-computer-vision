@@ -9,9 +9,15 @@
 <body>
 <div class="jumbotron jumbotron-fluid">
 	<div class="container bg-dark">
-		<h1 class="display-4 text-center text-light">{{prediction}}<h1>
+		<h1 class="display-4 text-center text-light">prediction<h1>
 	</div>
 </div>
+
+{%for i in range(0, 7)%}
+  
+<h3>{{categories[i]}}: {{prediction[i] * 100}}%</h3>
+
+{%endfor%} }}
 
 <img src={{url_for('static', filename=img)}} class="rounded mx-auto d-block" alt="...">
 

@@ -11,7 +11,7 @@ from PIL import Image
 import cv2
 
 app = Flask(__name__)
-
+categories = ['Actinic keratoses', 'Basal cell carcinoma', 'Benign keratosis-like lesions ', 'Dermatofibroma', 'Melanocytic nevi', 'Melanoma', 'Vascular lesions']
 UPLOAD_FOLDER = 'upload/'
 
 app.secret_key = "secret key"
@@ -44,7 +44,7 @@ def home():
         if form_image and allowed_file(form_image.filename):
             #print('upload_image filename: ' + filename)
             img = f"{UPLOAD_FOLDER}{form_image.filename}"
-            return render_template('prediction.html', img=img, prediction=predict(img))
+            return render_template('prediction.html', img=img, prediction=predict(img), categories=categories)
 
 
 
