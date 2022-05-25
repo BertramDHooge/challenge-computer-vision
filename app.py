@@ -44,7 +44,9 @@ def home():
         if form_image and allowed_file(form_image.filename):
             #print('upload_image filename: ' + filename)
             img = f"{UPLOAD_FOLDER}{form_image.filename}"
-            return render_template('prediction.html', img=img, prediction=predict(img), categories=categories)
+            prediction = predict(img)[0].tolist()
+            index_max = prediction.index(max(prediction))
+            return render_template('prediction.html', img=img, prediction=prediction[index_max], categories=categories[index_max])
 
 
 
